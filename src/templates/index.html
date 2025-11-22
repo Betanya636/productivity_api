@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            color: #333;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 70%;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 6px 12px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        button.add { background-color: #28a745; }
+        button.complete { background-color: #007bff; }
+        button.update { background-color: #ffc107; color: #000; }
+        button.delete { background-color: #dc3545; }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            background-color: #fff;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .task-title {
+            flex-grow: 1;
+        }
+
+        #stats {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task Tracker</h1>
+
+    <h2>Add Task</h2>
+    <div style="text-align:center;">
+        <input type="text" id="newTask" placeholder="Task title">
+        <button class="add" onclick="addTask()">Add</button>
+    </div>
+
+    <h2>Tasks</h2>
+    <ul id="taskList"></ul>
+
+    <h2>Stats</h2>
+    <div id="stats"></div>
+
+<script>
+const API = "http://127.0.0.1:5000";
+
+// Fetch and display tasks
+async function fetchTasks() {
+    const res = await fetch(`${API}/tasks`);
+    const tasks = await res.json();
+    const list = document.getElementById("taskList");
+    list.innerHTML = "";
+    tasks.forEach(task => {
+        const li = document.createElement("li");
+
+        // Checkbox for completed
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.completed;
+        checkbox.onclick = () => toggleComplete(task.id);
+        li.appendChild(checkbox);
+
+        // Task title
+        const span = document.createElement("span");
+        span.textContent = ` ${task.id}: ${task.title}`;
+        span.style.textDecoration = task.completed ? "line-through" : "none";
+        span.className = "task-title";
+        li.appendChild(span);
+
+        // Update button
+        const updateBtn = document.createElement("button");
+        updateBtn.textContent = "Update";
+        updateBtn.className = "update";
+        updateBtn.onclick = () => {
+            const newTitle = prompt("Enter new title", task.title);
+            if(newTitle) updateTask(task.id, newTitle);
+        }
+        li.appendChild(updateBtn);
+
+        // Delete button
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.className = "delete";
+        deleteBtn.onclick = () => deleteTask(task.id);
+        li.appendChild(deleteBtn);
+
+        list.appendChild(li);
+    });
+    fetchStats();
+}
+
+// Add task
+async function addTask() {
+    const title = document.getElementById("newTask").value;
+    if(!title) return alert("Enter a task title!");
+    await fetch(`${API}/tasks`, {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({title})
+    });
+    document.getElementById("newTask").value = "";
+    fetchTasks();
+}
+
+// Toggle completed using checkbox
+async function toggleComplete(id, completed) {
+    await fetch(`${API}/tasks/${id}/complete`, {method: "PUT"});
+    fetchTasks();
+}
+
+// Update task
+async function updateTask(id, title) {
+    await fetch(`${API}/tasks/${id}`, {
+        method: "PUT",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({title})
+    });
+    fetchTasks();
+}
+
+// Delete task
+async function deleteTask(id) {
+    await fetch(`${API}/tasks/${id}`, {method: "DELETE"});
+    fetchTasks();
+}
+
+// Fetch stats
+async function fetchStats() {
+    const res = await fetch(`${API}/tasks/stats`);
+    const stats = await res.json();
+    document.getElementById("stats").innerText =
+        `Total: ${stats.total_tasks}, Completed: ${stats.completed_tasks}, Incomplete: ${stats.incomplete_tasks}`;
+}
+
+// Load tasks on page load
+fetchTasks();
+</script>
+</body>
+</html>
