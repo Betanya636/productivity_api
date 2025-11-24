@@ -94,11 +94,11 @@ py .\src\app.py
 
 
 
-* Frontend: \(http://127.0.0.1:5000/)
+* Frontend: http://127.0.0.1:5000/
 
-* API endpoints: \(http://127.0.0.1:5000/tasks)
+* API endpoints: http://127.0.0.1:5000/tasks
 
-* Stats: \(http://127.0.0.1:5000/tasks/stats)
+* Stats: http://127.0.0.1:5000/tasks/stats
 
 
 
@@ -241,5 +241,4 @@ I chose a Flask RESTful API because it is simple, lightweight, and easy to exten
 
 **GitHub Repo:**
 
-\(https://github.com/Betanya636/productivity\_api) 
-
+[GitHub Repo](https://github.com/Betanya636/productivity_api)
