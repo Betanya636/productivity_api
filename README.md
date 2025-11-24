@@ -241,5 +241,5 @@ I chose a Flask RESTful API because it is simple, lightweight, and easy to exten
 
 **GitHub Repo:**
 
-\[https://github.com/Betanya636/productivity\_api](https://github.com/Betanya636/productivity\_api) 
+\(https://github.com/Betanya636/productivity\_api) 
 
