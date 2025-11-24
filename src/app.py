@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="src/templates")
 CORS(app)
 
 # In-memory list of tasks with seed/test data
