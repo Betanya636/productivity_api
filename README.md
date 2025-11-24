@@ -1,20 +1,20 @@
-\# Productivity Task Tracker API
+# Productivity Task Tracker API
 
 
 
-\## 1) Executive Summary
+## 1) Executive Summary
 
 
 
-\*\*Problem:\*\*
+**Problem:**
 
 People need a simple and lightweight way to track and manage tasks efficiently, including completing, updating, or deleting them, without requiring a full database backend or complex setup.
 
 
 
-\*\*Solution:\*\*
+**Solution:**
 
-The \*\*Task Tracker\*\* is a lightweight Flask API with an HTML/JavaScript frontend. Users can add, update, complete/un-complete, delete tasks, and view live statistics. All data is stored in memory for simplicity, making it fast and easy to run locally or via Docker.
+The **Task Tracker** is a lightweight Flask API with an HTML/JavaScript frontend. Users can add, update, complete/un-complete, delete tasks, and view live statistics. All data is stored in memory for simplicity, making it fast and easy to run locally or via Docker.
 
 
 
@@ -22,43 +22,35 @@ The \*\*Task Tracker\*\* is a lightweight Flask API with an HTML/JavaScript fron
 
 
 
-\## 2) System Overview
+## 2) System Overview
 
 
 
-\*\*Course Concept(s):\*\*
+**Course Concept(s):**
 
 
+* RESTful API development with Flask
 
-\* RESTful API development with Flask
+* JSON data exchange between frontend and backend
 
-\* JSON data exchange between frontend and backend
+* Optional containerization with Docker
 
-\* Optional containerization with Docker
-
-
-
-\### Architecture Diagram
-
-
+### Architecture Diagram
 
 !\[Architecture](assets/architecture.png)
 
 
+**Data / Models / Services:**
 
-\*\*Data / Models / Services:\*\*
+**Data:** In-memory Python dictionary storing tasks
 
+* **Sources:** User input through HTML frontend or API requests
 
+**Size:** Minimal; stores only current tasks in memory
 
-\* \*\*Data:\*\* In-memory Python dictionary storing tasks
+* **Format:** JSON
 
-\* \*\*Sources:\*\* User input through HTML frontend or API requests
-
-\* \*\*Size:\*\* Minimal; stores only current tasks in memory
-
-\* \*\*Format:\*\* JSON
-
-\* \*\*License:\*\* MIT
+* **License:** MIT
 
 
 
@@ -66,15 +58,15 @@ The \*\*Task Tracker\*\* is a lightweight Flask API with an HTML/JavaScript fron
 
 
 
-\## 3) How to Run (Local)
+## 3) How to Run (Local)
 
 
 
-\### Using Python (Local)
+### Using Python (Local)
 
 
 
-1\. Activate virtual environment:
+1. Activate virtual environment:
 
 
 
@@ -86,7 +78,7 @@ The \*\*Task Tracker\*\* is a lightweight Flask API with an HTML/JavaScript fron
 
 
 
-2\. Run the Flask app:
+2. Run the Flask app:
 
 
 
@@ -98,15 +90,15 @@ py app.py
 
 
 
-3\. Open your browser:
+3. Open your browser:
 
 
 
-\* Frontend: \[http://127.0.0.1:5000/index.html](http://127.0.0.1:5000/index.html)
+* Frontend: \[http://127.0.0.1:5000/index.html](http://127.0.0.1:5000/index.html)
 
-\* API endpoints: \[http://127.0.0.1:5000/tasks](http://127.0.0.1:5000/tasks)
+* API endpoints: \[http://127.0.0.1:5000/tasks](http://127.0.0.1:5000/tasks)
 
-\* Stats: \[http://127.0.0.1:5000/tasks/stats](http://127.0.0.1:5000/tasks/stats)
+* Stats: \[http://127.0.0.1:5000/tasks/stats](http://127.0.0.1:5000/tasks/stats)
 
 
 
@@ -114,7 +106,7 @@ py app.py
 
 
 
-\### Docker 
+### Docker 
 
 
 
@@ -144,59 +136,59 @@ curl http://localhost:5000/tasks
 
 
 
-\## 4) Design Decisions
+## 4) Design Decisions
 
 
 
-\*\*Why this concept?\*\*
+**Why this concept?**
 
 I chose a Flask RESTful API because it is simple, lightweight, and easy to extend. It demonstrates core course concepts such as GET, POST, PUT, and DELETE endpoints without the overhead of a full database backend.
 
 
 
-\*\*Alternatives considered:\*\*
+**Alternatives considered:**
 
 
 
-\* Full database backend (SQLite / MongoDB) — unnecessary for this simple project
+* Full database backend (SQLite / MongoDB) — unnecessary for this simple project
 
-\* Django — too heavy; Flask is better for rapid development
-
-
-
-\*\*Tradeoffs:\*\*
+* Django — too heavy; Flask is better for rapid development
 
 
 
-\* \*\*Performance:\*\* Fast in-memory storage (but resets on restart)
-
-\* \*\*Cost:\*\* Zero — local tools only
-
-\* \*\*Complexity:\*\* Very simple
-
-\* \*\*Maintainability:\*\* Easy to extend later
+**Tradeoffs:**
 
 
 
-\*\*Security / Privacy:\*\*
+* **Performance:** Fast in-memory storage (but resets on restart)
+
+* **Cost:** Zero — local tools only
+
+* **Complexity:** Very simple
+
+* * **Maintainability:** Easy to extend later
 
 
 
-\* Basic input validation
-
-\* No sensitive data stored
+**Security / Privacy:**
 
 
 
-\*\*Ops:\*\*
+* Basic input validation
+
+* No sensitive data stored
 
 
 
-\* Console-based logs
+**Ops:**
 
-\* Not built for production scale
 
-\* Known limitation: No persistent storage
+
+* Console-based logs
+
+* Not built for production scale
+
+* Known limitation: No persistent storage
 
 
 
@@ -204,11 +196,11 @@ I chose a Flask RESTful API because it is simple, lightweight, and easy to exten
 
 
 
-\## 5) Results \& Evaluation
+## 5) Results \& Evaluation
 
 
 
-\### Task Tracker Screenshot
+### Task Tracker Screenshot
 
 
 
@@ -216,7 +208,7 @@ I chose a Flask RESTful API because it is simple, lightweight, and easy to exten
 
 
 
-\### Sample Output
+### Sample Output
 
 
 
@@ -232,33 +224,22 @@ I chose a Flask RESTful API because it is simple, lightweight, and easy to exten
 
 
 
-\## 6) What’s Next
+## 6) What’s Next
 
-
-
-\* Add persistent storage (SQLite or MongoDB)
-
-\* Add authentication
-
-\* Add task filtering, sorting, and search
-
-\* Deploy backend + frontend to cloud
-
-\* Improve logging and metrics
-
-\* Enhance UI and responsiveness
-
-
+* Add persistent storage (SQLite or MongoDB)
+* Add authentication
+* Add task filtering, sorting, and search
+* Deploy backend + frontend to cloud
+* Improve logging and metrics
+* Enhance UI and responsiveness
 
 ---
 
 
 
-\## 7) Links
+## 7) Links
 
-
-
-\*\*GitHub Repo:\*\*
+**GitHub Repo:**
 
 \[https://github.com/Betanya636/productivity\_api](https://github.com/Betanya636/productivity\_api) 
 
