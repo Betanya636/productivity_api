@@ -204,8 +204,7 @@ I chose a Flask RESTful API because it is simple, lightweight, and easy to exten
 
 
 
-!\[Task Tracker Screenshot](assets/tracker.png)
-
+![Task Tracker Screenshot](assets/tracker.png)
 
 
 ### Sample Output
