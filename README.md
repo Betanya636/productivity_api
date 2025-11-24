@@ -37,8 +37,7 @@ The **Task Tracker** is a lightweight Flask API with an HTML/JavaScript frontend
 
 ### Architecture Diagram
 
-!\[Architecture](assets/architecture.png)
-
+![Architecture Diagram](assets/architecture.png)
 
 **Data / Models / Services:**
 
