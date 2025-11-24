@@ -84,7 +84,7 @@ The **Task Tracker** is a lightweight Flask API with an HTML/JavaScript frontend
 
 ```powershell
 
-py app.py
+py .\src\app.py
 
 ```
 
@@ -112,19 +112,19 @@ py app.py
 
 ```bash
 
-\# build Docker image
+# build Docker image
 
 docker build -t productivity\_api:latest .
 
 
 
-\# run container
+# run container
 
 docker run --rm -p 5000:5000 productivity\_api:latest
 
 
 
-\# health check
+# health check
 
 curl http://localhost:5000/tasks
 
