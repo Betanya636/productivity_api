@@ -96,9 +96,9 @@ py .\src\app.py
 
 * Frontend: \(http://127.0.0.1:5000/)
 
-* API endpoints: \[http://127.0.0.1:5000/tasks](http://127.0.0.1:5000/tasks)
+* API endpoints: \(http://127.0.0.1:5000/tasks)
 
-* Stats: \[http://127.0.0.1:5000/tasks/stats](http://127.0.0.1:5000/tasks/stats)
+* Stats: \(http://127.0.0.1:5000/tasks/stats)
 
 
 
