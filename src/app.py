@@ -2,9 +2,10 @@ from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 import os
 
-# Absolute path to the templates folder
-template_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'templates')
-app = Flask(__name__, template_folder=template_dir)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
+
+app = Flask(__name__, template_folder=TEMPLATE_DIR)
 CORS(app)
 
 # In-memory list of tasks with seed/test data
