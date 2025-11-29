@@ -5,7 +5,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copy requirement list
-COPY requirements.txt .
+COPY requirements.txt ./requirements.txt
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
@@ -13,8 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the source code folder
 COPY src/ ./src/
 
-# Copy templates (NEEDED!)
-COPY templates/ ./templates/
+# Copy templates to match app.py
+COPY src/templates/ ./templates/
 
 # Expose the port your Flask app runs on (default 5000)
 EXPOSE 5000
